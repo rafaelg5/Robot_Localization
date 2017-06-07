@@ -27,7 +27,15 @@ package ia;
  *
  * @author Rafael
  */
-public class Main {
+import processing.core.PApplet;
+import processing.core.PFont;
+
+import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.PriorityQueue;
+import java.util.Random;
+
+public class Main extends PApplet{
 
     /**
      * @param args the command line arguments

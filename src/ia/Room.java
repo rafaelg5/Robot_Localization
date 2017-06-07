@@ -34,11 +34,12 @@ public class Room {
     private int size;
     private Cell matrix[][];
 
-    public class Cell {
+    private class Cell {
 
-        private boolean isObstacle;
-        private int x;
-        private int y;
+        public boolean isObstacle;
+        public int x;
+        public int y;
+        public final int LENGTH = 60;
 
         public Cell(int xCoordinate, int yCoordinate) {
             this.x = xCoordinate;
@@ -100,6 +101,6 @@ public class Room {
     }
     
     public boolean isObstacle(int i, int j){
-        return matrix[i][j].isObstacle;
+        return matrix[i][j].isObstacle;        
     }
 }
