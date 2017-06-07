@@ -31,7 +31,8 @@ import java.util.Random;
  */
 public class Room {
 
-    private int size;
+    private int rows;
+    private int cols;
     private Cell matrix[][];
 
     private class Cell {
@@ -47,14 +48,15 @@ public class Room {
         }
     }
 
-    public Room(int size, boolean isRandom) {
+    public Room(int rows, int cols, boolean isRandom) {
         
-        this.size = size;
-        matrix = new Cell[size][size];
+        this.rows = rows;
+        this.cols = cols;
+        matrix = new Cell[rows][cols];
         if (isRandom) {
 
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
                     matrix[i][j] = new Cell(i, j);
                     int rn = new Random().nextInt(4);
                     if (rn == 0) {
@@ -63,27 +65,41 @@ public class Room {
                 }
             }
         } else {            
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
                     matrix[i][j] = new Cell(i, j);
                 }
             }
         }
 
     }
-
+    
     /**
-     * @return the size
+     * @return the rows
      */
-    public int getSize() {
-        return size;
+    public int getRows() {
+        return rows;
     }
 
     /**
-     * @param size the size to set
+     * @param rows the rows to set
      */
-    public void setSize(int size) {
-        this.size = size;
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    /**
+     * @return the cols
+     */
+    public int getCols() {
+        return cols;
+    }
+
+    /**
+     * @param cols the cols to set
+     */
+    public void setCols(int cols) {
+        this.cols = cols;
     }
 
     /**
@@ -102,5 +118,5 @@ public class Room {
     
     public boolean isObstacle(int i, int j){
         return matrix[i][j].isObstacle;        
-    }
+    }    
 }

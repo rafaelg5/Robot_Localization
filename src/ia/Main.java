@@ -29,19 +29,47 @@ package ia;
  */
 import processing.core.PApplet;
 import processing.core.PFont;
-
-import java.util.LinkedList;
-import java.util.HashMap;
-import java.util.PriorityQueue;
 import java.util.Random;
 
-public class Main extends PApplet{
+public class Main extends PApplet {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    PFont font;
+    int cellSize = 60;
+    int columns = 10, rows = 8;
 
+    Room room;
+
+    @Override
+    public void settings() {
+        size(columns * cellSize, rows * cellSize);
+    }
+
+    @Override
+    public void setup() {
+
+        background(200);
+        font = createFont("Arial", 12, true);
+        textFont(font, 12);
+        room = new Room(rows, columns, true);
+
+    }
+
+    @Override
+    public void draw() {
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (room.isObstacle(i, j)) {
+                    stroke(0);
+                    fill(102, 51, 0);
+                    rect(j * cellSize, i * cellSize, cellSize, cellSize);
+                } 
+            }
+        }
+    }
+
+    static public void main(String args[]) {
+        PApplet.main(new String[]{"ia.Main"});
     }
 
 }
