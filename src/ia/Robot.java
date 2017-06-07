@@ -23,10 +23,51 @@
  */
 package ia;
 
+import java.util.Random;
+
 /**
  *
  * @author Rafael
  */
 public class Robot {
-    
+
+    private class LaserSensor extends Sensor {
+
+        public LaserSensor(double distance, double cellSize) {
+            super(distance, cellSize * 2);
+        }
+    }
+
+    private class OdometrySensor extends Sensor {
+
+        public OdometrySensor(double distance, double cellSize) {
+            super(distance, cellSize * 2);
+        }
+    }
+
+    private class RotationSensor extends Sensor {
+
+        public RotationSensor(double distance, double cellSize) {
+            super(distance, cellSize * 2);
+        }        
+    }
+
+    public LaserSensor lS0;
+    public LaserSensor lS45;
+    public LaserSensor lS90;
+    public LaserSensor lS135;
+    public LaserSensor lS180;
+    public LaserSensor lS225;
+    public LaserSensor lS270;
+    public LaserSensor lS315;
+    public OdometrySensor oS;
+    public RotationSensor rS;
+
+    public void moveFront() {
+
+    }
+
+    public void turn(double rad) {
+
+    }
 }

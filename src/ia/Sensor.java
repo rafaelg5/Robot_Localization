@@ -23,12 +23,26 @@
  */
 package ia;
 
+import java.util.Random;
+
 /**
  *
  * @author Rafael
  */
-public class Cell {
+public class Sensor {
 
-    private boolean isObstacle;
-    private double length;
+    protected final Random random;
+    protected final double mean;
+    protected final double standardDev;
+
+    public Sensor(double mean, double standardDeviation) {
+        this.mean = mean;
+        standardDev = standardDeviation;
+        random = new Random();
+    }
+
+    protected double sense() {
+        double randomGauss = random.nextGaussian();
+        return mean + (randomGauss * standardDev);
+    }
 }
