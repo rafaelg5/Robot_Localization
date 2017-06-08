@@ -35,12 +35,21 @@ public class Sensor {
     protected final double mean;
     protected final double standardDev;
 
+    /**
+     * Initializes a sensor
+     * @param mean the mean of the measures
+     * @param standardDeviation the standard deviation of the measures
+     */
     public Sensor(double mean, double standardDeviation) {
         this.mean = mean;
         standardDev = standardDeviation;
         random = new Random();
     }
 
+    /**
+     * Simulates the measure of the sensor with noise.
+     * @return the result of the measure
+     */
     protected double sense() {
         double randomGauss = random.nextGaussian();
         return mean + (randomGauss * standardDev);

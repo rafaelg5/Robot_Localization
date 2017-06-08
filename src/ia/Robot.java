@@ -23,32 +23,55 @@
  */
 package ia;
 
-import java.util.Random;
-
 /**
  *
  * @author Rafael
  */
 public class Robot {
 
+    /**
+     * Class representing a laser sensor
+     */
     private class LaserSensor extends Sensor {
 
-        public LaserSensor(double distance, double cellSize) {
-            super(distance, cellSize * 2);
+        /**
+         * Initializes a laser sensor
+         * @param distance the real distance measured from the robot to the 
+         * first obstacle in a straight line in the sensor's direction.
+         * @param sd the standard deviation proportional to the cell size 
+         */
+        public LaserSensor(double distance, double sd) {
+            super(distance, sd * 2);
         }
     }
 
+    /**
+     * Class representing an odometry sensor
+     */
     private class OdometrySensor extends Sensor {
 
-        public OdometrySensor(double distance, double cellSize) {
-            super(distance, cellSize * 2);
+        /**
+         * Initializes an odometry sensor
+         * @param degrees the actual degrees rotated.
+         * @param sd the standard deviation proportional to the degrees 
+         */
+        public OdometrySensor(double degrees, double sd){
+            super(degrees, sd * 2);
         }
     }
 
+    /**
+     * Class representing a rotation sensor
+     */
     private class RotationSensor extends Sensor {
 
-        public RotationSensor(double distance, double cellSize) {
-            super(distance, cellSize * 2);
+        /**
+         * Initializes a rotation sensor
+         * @param degrees the actual degrees rotated.
+         * @param sd the standard deviation proportional to the degrees 
+         */
+        public RotationSensor(double degrees, double sd) {
+            super(degrees, sd * 2);
         }        
     }
 
@@ -63,10 +86,17 @@ public class Robot {
     public OdometrySensor oS;
     public RotationSensor rS;
 
+    /**
+     * Moves the robot in the direction it is facing.
+     */
     public void moveFront() {
 
     }
 
+    /**
+     * Turns the robot 
+     * @param rad the number of degrees (in radians) of the turn
+     */
     public void turn(double rad) {
 
     }

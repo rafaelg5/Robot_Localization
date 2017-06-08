@@ -33,17 +33,16 @@ import java.util.Random;
 
 public class Main extends PApplet {
 
-    PFont font;
-    int cellSize = 60;
-    int columns = 10, rows = 8;
-    Room room;
-    Random random;
-    Robot robot;
-    float robotSize;
-    int robotCenterX;
-    int robotCenterY;
-    double ang[];
-    double dir;
+    public static int cellSize = 60;
+    private int columns = 10, rows = 8;
+    private Room room;
+    private Random random;
+    private Robot robot;
+    private float robotSize;
+    private int robotCenterX;
+    private int robotCenterY;
+    private double ang[];
+    private double dir;
 
     @Override
     public void settings() {
@@ -51,19 +50,12 @@ public class Main extends PApplet {
     }
 
     @Override
-    public void setup() {
-        background(200);
+    public void setup() {        
+        
         room = new Room(rows, columns, true);
         random = new Random();
         robotSize = cellSize / 2f;
-        /*
-        float min = robotSize / 2;
-        float maxX = (columns * cellSize) - (robotSize / 2);
-        float maxY = (rows * cellSize) - (robotSize / 2);
         
-        float r1 = (maxX - min) * random.nextFloat() + min;
-        float r2 = (maxY - min) * random.nextFloat() + min;
-         */
         int r1;
         int r2;
         do {

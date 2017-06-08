@@ -35,25 +35,43 @@ public class Room {
     private int cols;
     private Cell matrix[][];
 
+    /*
+     * Private class representing a unit in a room.
+     */
     private class Cell {
-
+        
         public boolean isObstacle;
         public int x;
         public int y;
-        public final int LENGTH = 60;
+        
+        // Length of one side of the cell (square)
+        public final int LENGTH = Main.cellSize;
 
+        /**
+         * Initializes the cell with a given point (x, y)
+         * @param xCoordinate the x point representing the cell
+         * @param yCoordinate the y point representing the cell
+         */
         public Cell(int xCoordinate, int yCoordinate) {
             this.x = xCoordinate;
             this.y = yCoordinate;
         }
     }
 
-    public Room(int rows, int cols, boolean isRandom) {
-        
+    /**
+     * Constructs a room which is a 2d matrix, each position representing
+     * a tile in a room
+     * @param rows the number of rows 
+     * @param cols the number of columns
+     * @param hasRandomObstacles indicates if it will have obstacles in 
+     * random positions of the room
+     */
+    public Room(int rows, int cols, boolean hasRandomObstacles) {
+
         this.rows = rows;
         this.cols = cols;
         matrix = new Cell[rows][cols];
-        if (isRandom) {
+        if (hasRandomObstacles) {
 
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
@@ -64,7 +82,7 @@ public class Room {
                     }
                 }
             }
-        } else {            
+        } else {
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
                     matrix[i][j] = new Cell(i, j);
@@ -73,7 +91,7 @@ public class Room {
         }
 
     }
-    
+
     /**
      * @return the rows
      */
@@ -103,20 +121,12 @@ public class Room {
     }
 
     /**
-     * @return the matrix
+     * Determines if the Cell with coordinates (i, j) is an obstacle or not.
+     * @param i the x coordinate of the Cell
+     * @param j the y coordinate of the Cell
+     * @return <b>True</b> if the Cell is an obstacle. <b>False</b> in other case.
      */
-    public Cell[][] getMatrix() {
-        return matrix;
+    public boolean isObstacle(int i, int j) {
+        return matrix[i][j].isObstacle;
     }
-
-    /**
-     * @param matrix the matrix to set
-     */
-    public void setMatrix(Cell[][] matrix) {
-        this.matrix = matrix;
-    }
-    
-    public boolean isObstacle(int i, int j){
-        return matrix[i][j].isObstacle;        
-    }    
 }
