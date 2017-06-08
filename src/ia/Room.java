@@ -33,7 +33,7 @@ public class Room {
 
     private int rows;
     private int cols;
-    private Cell matrix[][];
+    private final Cell matrix[][];
 
     /*
      * Private class representing a unit in a room.

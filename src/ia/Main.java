@@ -28,13 +28,13 @@ package ia;
  * @author Rafael
  */
 import processing.core.PApplet;
-import processing.core.PFont;
 import java.util.Random;
 
 public class Main extends PApplet {
 
     public static int cellSize = 60;
-    private int columns = 10, rows = 8;
+    private final int columns = 10;
+    private final int rows = 8;
     private Room room;
     private Random random;
     private Robot robot;
@@ -50,12 +50,13 @@ public class Main extends PApplet {
     }
 
     @Override
-    public void setup() {        
-        
+    public void setup() {
+
         room = new Room(rows, columns, true);
+        robot = new Robot(room);
         random = new Random();
         robotSize = cellSize / 2f;
-        
+
         int r1;
         int r2;
         do {
@@ -134,7 +135,7 @@ public class Main extends PApplet {
                 robotCenterX += cellSize;
                 redraw();
             }
-            
+
             if (dir == ang[3]) {
                 if (centerY == rows - 1 || centerX == columns - 1) {
                     return;
@@ -157,7 +158,7 @@ public class Main extends PApplet {
                 robotCenterY += cellSize;
                 redraw();
             }
-            
+
             if (dir == ang[5]) {
                 if (centerY == rows - 1 || centerX == 0) {
                     return;
@@ -180,7 +181,7 @@ public class Main extends PApplet {
                 robotCenterX -= cellSize;
                 redraw();
             }
-            
+
             if (dir == ang[7]) {
                 if (centerY == 0 || centerX == 0) {
                     return;
@@ -224,9 +225,11 @@ public class Main extends PApplet {
         text("D: Turn robot 45° right", 40, rows * cellSize + 50);
         text("W: Move robot in the facing direction",
                 3 * cellSize, rows * cellSize + 30);
+
     }
 
     static public void main(String args[]) {
+        
         PApplet.main(new String[]{"ia.Main"});
     }
 
