@@ -58,7 +58,7 @@ public class Room {
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
                     matrix[i][j] = new Cell(i, j);
-                    int rn = new Random().nextInt(4);
+                    int rn = new Random().nextInt(5);
                     if (rn == 0) {
                         matrix[i][j].isObstacle = true;
                     }
